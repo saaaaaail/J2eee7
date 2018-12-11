@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sc-di>
+    <bean id="userBean" class="sail.ustc.model.UserBean"></bean>
+    <bean id="login" class="sail.ustc.action.LoginAction">
+        <field name="userBean" bean-ref="userBean"></field>
+    </bean>
+    <!--some beans-->
+</sc-di>

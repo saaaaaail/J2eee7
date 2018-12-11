@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OR-Mapping>
+    <jdbc><property name="driver" value="com.mysql.jdbc.Driver"></property><property name ="url" value="jdbc:mysql://localhost:3306/sc?useSSL=false"></property><property name ="username" value="root"></property><property name="password" value="123456"></property></jdbc>
+    <class name="sail.ustc.model.UserBean" table="user"><property name="userId" column="id" type="String" lazy="false"></property><property name="userName" column="name" type="String" lazy="true"></property><property name="userPass" column="password" type="String" lazy="true"></property></class>
+</OR-Mapping>
