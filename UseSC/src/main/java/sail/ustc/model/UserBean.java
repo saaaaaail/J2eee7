@@ -35,7 +35,6 @@ public class UserBean {
         return false;
     }
 
-
     public String getUserId() {
         return userId;
     }

@@ -12,7 +12,8 @@ public class ActionProxy implements InvocationHandler {
     private String fileString;
     private String actionName;
     private String resultString;
-
+    private Object preInstance;
+    private Object afterInstance;
 
     public ActionProxy(Object target, String fileString, String actionName){
         this.target = target;
@@ -56,7 +57,8 @@ public class ActionProxy implements InvocationHandler {
             //System.out.println("preAction: "+classString);
             Class interPreClass = Class.forName(classString);
             Method interPre = interPreClass.getMethod(methodString,String.class);
-            interPre.invoke(interPreClass.newInstance(),actionName);
+            if(preInstance==null){preInstance=interPreClass.newInstance();}//单线程单例
+            interPre.invoke(preInstance,actionName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,7 +72,8 @@ public class ActionProxy implements InvocationHandler {
             //System.out.println("afterAction: "+classString);
             Class interAfterClass = Class.forName(classString);
             Method interPre = interAfterClass.getMethod(methodString,String.class);
-            interPre.invoke(interAfterClass.newInstance(),resultString);
+            if(afterInstance==null){afterInstance=interAfterClass.newInstance();}
+            interPre.invoke(afterInstance,resultString);
         } catch (Exception e) {
             e.printStackTrace();
         }

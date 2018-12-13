@@ -18,10 +18,9 @@ public class XmlUtil {
 
     private XmlUtil(){}
 
-    private static XmlUtil xmlUtil = new XmlUtil();
+    private final static XmlUtil xmlUtil = new XmlUtil();
 
     public static XmlUtil getInstance(){
-        if(xmlUtil==null){xmlUtil = new XmlUtil();}
         return xmlUtil;
     }
 

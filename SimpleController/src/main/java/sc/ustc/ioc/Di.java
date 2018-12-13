@@ -13,7 +13,7 @@ public class Di {
 
     private Di(){
     }
-    private static Di di = new Di();
+    private final static Di di = new Di();
     public static Di getInstance(){return di;}
     DiEntity diEntity = DiEntity.getInstance();
     Map<String, Bean> map = diEntity.parseDi();
@@ -59,6 +59,7 @@ public class Di {
                     if (pd.getName().equals(b.getId())&&pd.getName().equals("userBean")){
                         //初始化被依赖bean类
                         //执行setter方法
+                        System.out.println("执行setter，完成注入！");
                         Method method = pd.getWriteMethod();
                         method.invoke(actionObj,Class.forName(b.getClazz()).newInstance());
                     }

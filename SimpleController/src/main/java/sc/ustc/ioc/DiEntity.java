@@ -20,9 +20,8 @@ import java.util.Map;
 public class DiEntity {
 
     private DiEntity(){}
-    private static DiEntity diEntity = new DiEntity();
+    private final static DiEntity diEntity = new DiEntity();
     public static DiEntity getInstance(){
-        if (diEntity==null){diEntity=new DiEntity();}
         return diEntity;
     }
 

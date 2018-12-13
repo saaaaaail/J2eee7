@@ -16,9 +16,8 @@ import java.util.List;
 
 public class Configuration {
     private Configuration(){}
-    private static Configuration configuration = new Configuration();
+    private final static Configuration configuration = new Configuration();
     public static Configuration getInstance(){
-        if(configuration==null){configuration = new Configuration();}
         return configuration;
     }
 
