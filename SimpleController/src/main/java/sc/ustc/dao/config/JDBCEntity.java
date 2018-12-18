@@ -1,4 +1,4 @@
-package sc.ustc.dao;
+package sc.ustc.dao.config;
 
 public class JDBCEntity {
     private String driver;

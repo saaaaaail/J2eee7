@@ -1,13 +1,17 @@
 package sc.ustc.dao;
 
+import sc.ustc.dao.config.JDBCEntity;
+import sc.ustc.dao.config.ORMUserEntity;
+import sc.ustc.dao.config.ProperityEntity;
+
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.List;
 
 public class Conversation {
 
-    public static Object getObject(Object o){
+    public static Object getObject(Object o) throws SQLException {
+        Connection connection=null;//数据库连接
         try {
             Configuration  configuration = Configuration.getInstance();
             //获得类名
@@ -37,7 +41,7 @@ public class Conversation {
                     String SQL = "select * from " + table + " where " + list.get(i).getColumn() + " = " + value;
                     //String SQL = "select * from " + table + " where name = 'sail'";
                     System.out.println(SQL);
-                    Connection connection = getConnection();
+                    connection = getConnection();
                     Statement statement = connection.createStatement();
                     resultSet = statement.executeQuery(SQL);
                 }
@@ -69,11 +73,14 @@ public class Conversation {
             e.printStackTrace();
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
+        }finally {
+            connection.close();
         }
         return null;
     }
 
-    public static boolean deleteObject(Object o){
+    public static boolean deleteObject(Object o) throws SQLException {
+        Connection connection=null;
         try {
             Configuration configuration = Configuration.getInstance();
             Class cls = o.getClass();
@@ -89,7 +96,7 @@ public class Conversation {
                     f.setAccessible(true);
                     String value = f.get(o).toString();
                     String SQL = "delete from " + table + " where " + list.get(i).getColumn() + " = " + value;
-                    Connection connection = getConnection();
+                    connection = getConnection();
                     pstmt = connection.prepareStatement(SQL);
                     r = pstmt.executeUpdate();
                 }
@@ -101,6 +108,8 @@ public class Conversation {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            connection.close();
         }
         return false;
     }

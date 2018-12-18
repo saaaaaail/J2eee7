@@ -22,11 +22,16 @@ public class ActionPackage implements Action{
                 return mess[0];
             }
 
-            di.DependencyInject(actionName);
+            //注入所有bean
+            di.Inject();
+            //从容器中获得bean实例
+            Object object = di.getObject(actionName);
 
-            Class actionClass = Class.forName(mess[0]);
+            //Class actionClass = Class.forName(mess[0]);
+            //以下完成bean实例中对应controller.xml的跳转
+            Class actionClass = object.getClass();
             Method method = actionClass.getMethod(mess[1],String.class,String.class);
-            obj = method.invoke(actionClass.newInstance(),userid,userpass);
+            obj = method.invoke(object,userid,userpass);
             System.out.println((String)obj);
 
             String result = xmlUtil.parseChild(fileString,actionName,(String)obj);

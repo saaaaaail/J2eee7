@@ -5,6 +5,9 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import sc.ustc.dao.config.JDBCEntity;
+import sc.ustc.dao.config.ORMUserEntity;
+import sc.ustc.dao.config.ProperityEntity;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

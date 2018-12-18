@@ -2,9 +2,9 @@ package sail.ustc.dao;
 
 import sail.ustc.model.UserBean;
 import sc.ustc.dao.Configuration;
-import sc.ustc.dao.JDBCEntity;
-import sc.ustc.dao.ORMUserEntity;
-import sc.ustc.dao.ProperityEntity;
+import sc.ustc.dao.config.JDBCEntity;
+import sc.ustc.dao.config.ORMUserEntity;
+import sc.ustc.dao.config.ProperityEntity;
 
 import javax.net.ssl.SSLContext;
 import java.lang.reflect.Field;

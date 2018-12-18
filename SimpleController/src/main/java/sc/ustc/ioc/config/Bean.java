@@ -1,4 +1,4 @@
-package sc.ustc.ioc;
+package sc.ustc.ioc.config;
 
 import java.util.List;
 

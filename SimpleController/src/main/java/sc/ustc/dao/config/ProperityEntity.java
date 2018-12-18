@@ -1,4 +1,4 @@
-package sc.ustc.dao;
+package sc.ustc.dao.config;
 
 public class ProperityEntity {
     private String name;

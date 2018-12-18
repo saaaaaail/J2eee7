@@ -1,4 +1,4 @@
-package sc.ustc.dao;
+package sc.ustc.dao.config;
 
 import java.util.List;
 

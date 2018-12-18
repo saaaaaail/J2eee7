@@ -1,4 +1,4 @@
-package sc.ustc.ioc;
+package sc.ustc.ioc.config;
 
 public class Field {
     private String name;

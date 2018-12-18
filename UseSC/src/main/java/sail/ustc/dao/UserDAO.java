@@ -4,6 +4,8 @@ import sail.ustc.lazyload.UserProxy;
 import sail.ustc.model.UserBean;
 import sc.ustc.dao.Conversation;
 
+import java.sql.SQLException;
+
 public class UserDAO extends sc.ustc.dao.BaseDAO {
 
     private static UserDAO userDAO = new UserDAO();
@@ -22,9 +24,6 @@ public class UserDAO extends sc.ustc.dao.BaseDAO {
     }
 
     public static UserDAO getInstance(){
-        if (userDAO==null){
-            userDAO=new UserDAO();
-        }
         return userDAO;
     }
 
@@ -52,7 +51,12 @@ public class UserDAO extends sc.ustc.dao.BaseDAO {
             e.printStackTrace();
         }
         */
-        UserBean newUserBean = (UserBean) Conversation.getObject(new UserBean(s));
+        UserBean newUserBean = null;
+        try {
+            newUserBean = (UserBean) Conversation.getObject(new UserBean(s));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return newUserBean;
     }
 
@@ -77,6 +81,11 @@ public class UserDAO extends sc.ustc.dao.BaseDAO {
 
     @Override
     public boolean dalete(String s) {
-        return Conversation.deleteObject(new UserBean(s));
+        try {
+            return Conversation.deleteObject(new UserBean(s));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

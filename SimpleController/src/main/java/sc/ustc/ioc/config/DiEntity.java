@@ -1,11 +1,10 @@
-package sc.ustc.ioc;
+package sc.ustc.ioc.config;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import sc.ustc.dao.Configuration;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,7 +24,7 @@ public class DiEntity {
         return diEntity;
     }
 
-    private static Map<String,Bean> map;
+    private static Map<String, Bean> map;
 
     public Map parseDi(){
         if(map==null) {
